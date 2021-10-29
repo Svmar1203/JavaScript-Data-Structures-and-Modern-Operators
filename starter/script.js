@@ -31,9 +31,24 @@ const restaurant = {
   },
 };
 
+/////--ARRAY--////////////
+const { name, categories, openingHours } = restaurant;
+console.log(name, categories, openingHours);
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+/*
 console.log(restaurant.order(3, 0));
 const [starter, main] = restaurant.order(3, 0);
 console.log(starter, main);
+*/
 
 ///////////////////
 /*
@@ -89,7 +104,7 @@ console.log(menu, starters);
 //console.log(i, b, k);
 
 //////////--DEFAULT VALUES--/////
-const [i, p, j = 1] = [8, 9];
-console.log(i, p, j);
-const [h = 1, k = 1, l = 1] = [2, 5];
-console.log(h, k, l);
+//const [i, p, j = 1] = [8, 9];
+//console.log(i, p, j);
+//const [h = 1, k = 1, l = 1] = [2, 5];
+//console.log(h, k, l);
