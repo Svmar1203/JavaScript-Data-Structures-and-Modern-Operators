@@ -31,6 +31,12 @@ const restaurant = {
   },
 };
 
+console.log(restaurant.order(3, 0));
+const [starter, main] = restaurant.order(3, 0);
+console.log(starter, main);
+
+///////////////////
+/*
 const arr = [2, 3, 4];
 const a = arr[0];
 const b = arr[1];
@@ -38,15 +44,46 @@ const c = arr[2];
 
 const [x, y, z] = arr;
 console.log(x, y, z);
-
+*/
+/////////////////////
+/*
 let [main, secondary] = restaurant.categories;
 console.log(main, secondary);
+*/
+////////////////////////
 /*
+//Switching variables num.1
 const temp = main;
 main = secondary;
 secondary = temp;
 console.log(main, temp);
 */
-
+/////////////////
+//Switcing variables num.2
+/*
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
+*/
+//////////////
+/*
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restorauntName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restorauntName, hours, tags);
+console.log(restaurant);
+*/
+////////--NESTED DISTRUCTURING--////
+/*
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+*/
+/////////////////////
+const nested = [2, 4, [7, 8]];
+//const [i, , j] = nested;
+const [i, , [b, k]] = nested;
+console.log(i, b, k);
