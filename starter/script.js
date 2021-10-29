@@ -77,13 +77,19 @@ const {
 console.log(restorauntName, hours, tags);
 console.log(restaurant);
 */
-////////--NESTED DISTRUCTURING--////
+
 /*
 const { menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters);
 */
-/////////////////////
-const nested = [2, 4, [7, 8]];
+////////--NESTED DESTRUCTURING--////
+//const nested = [2, 4, [7, 8]];
 //const [i, , j] = nested;
-const [i, , [b, k]] = nested;
-console.log(i, b, k);
+//const [i, , [b, k]] = nested;
+//console.log(i, b, k);
+
+//////////--DEFAULT VALUES--/////
+const [i, p, j = 1] = [8, 9];
+console.log(i, p, j);
+const [h = 1, k = 1, l = 1] = [2, 5];
+console.log(h, k, l);
