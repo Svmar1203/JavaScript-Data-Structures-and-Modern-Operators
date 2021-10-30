@@ -53,6 +53,8 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
+/////////--Spread operations--///////////
+/*
 const arr = [1, 2, 3];
 const badArr = [5, 6, arr[0], arr[1], arr[2]];
 console.log(badArr);
@@ -65,14 +67,23 @@ console.log(otherArr);
 
 const newMenu = [...restaurant.mainMenu, 'Fish'];
 console.log(newMenu);
+*/
+
+//////--Iterables: arrays, strings, maps, sets, NOT OBJECTS!!--//////////////
+const str = 'Svetlana';
+const letters = [...str, ' ', 'M.'];
+console.log(letters); //'S', 'v', 'e',...
+console.log(...letters); //S v e t l a n a  M.
 
 /////--Copy array--////////////
-const mainMenuCopy = [...restaurant.mainMenu];
-console.log(mainMenuCopy);
+//const mainMenuCopy = [...restaurant.mainMenu];
+//console.log(mainMenuCopy);
 
 //////--Join 2 Arrays--////////
+/*
 const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 console.log(menu);
+*/
 
 /////--ARRAY--////////////
 /*
