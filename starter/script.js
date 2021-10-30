@@ -14,6 +14,16 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    address,
+    time = '22.00',
+  }) {
+    console.log(
+      `Order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will by delivered to ${address} at time ${time}`
+    );
+  },
 
   openingHours: {
     thu: {
@@ -31,7 +41,20 @@ const restaurant = {
   },
 };
 
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Street via Sole',
+  mainIndex: 2,
+  starterIndex: 1,
+});
+
+restaurant.orderDelivery({
+  address: 'Vaiavara',
+  starterIndex: 2,
+});
+
 /////--ARRAY--////////////
+/*
 const { name, categories, openingHours } = restaurant;
 console.log(name, categories, openingHours);
 const {
@@ -39,18 +62,36 @@ const {
   openingHours: hours,
   categories: tags,
 } = restaurant;
-console.log(restaurantName, hours, tags);
+console.log(restaurantName, hours, tags);*/
 
 ////--Default values--/////
+/*
 const { menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters);
+*/
 
 //////--Mutating variables--///////////
+/*
 let a = 222;
 let b = 40;
 const obj = { a: 10, b: 15, c: 20 };
 ({ a, b } = obj); // requared parentheses!!
 console.log(a, b);
+*/
+
+///////--Nested objects--//////////
+/*
+const {
+  fri: { open, close },
+} = openingHours;
+console.log(open, close);
+*/
+/*
+const {
+  fri: { open: c, close: d },
+} = openingHours;
+console.log(c, d);
+*/
 
 /*
 console.log(restaurant.order(3, 0));
