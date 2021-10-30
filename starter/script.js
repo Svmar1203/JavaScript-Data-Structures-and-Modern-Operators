@@ -53,6 +53,27 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
+const arr = [1, 2, 3];
+const badArr = [5, 6, arr[0], arr[1], arr[2]];
+console.log(badArr);
+
+const goodArr = [8, 9, ...arr];
+console.log(goodArr);
+
+const otherArr = [7, 5, ...badArr];
+console.log(otherArr);
+
+const newMenu = [...restaurant.mainMenu, 'Fish'];
+console.log(newMenu);
+
+/////--Copy array--////////////
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+
+//////--Join 2 Arrays--////////
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
 /////--ARRAY--////////////
 /*
 const { name, categories, openingHours } = restaurant;
