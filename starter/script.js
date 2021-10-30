@@ -41,8 +41,16 @@ const {
 } = restaurant;
 console.log(restaurantName, hours, tags);
 
+////--Default values--/////
 const { menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters);
+
+//////--Mutating variables--///////////
+let a = 222;
+let b = 40;
+const obj = { a: 10, b: 15, c: 20 };
+({ a, b } = obj); // requared parentheses!!
+console.log(a, b);
 
 /*
 console.log(restaurant.order(3, 0));
