@@ -11,8 +11,7 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+}
   },
   orderDelivery: function ({
     starterIndex = 1,
@@ -53,6 +52,27 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
+//const [one, , , four] = restaurant.categories;
+//console.log(`ALLEE!!! ${one}, ${four}`);
+///////////////////////
+
+//Variant 1, with temporary variable in middle
+/*
+let [main, secondary] = restaurant.categories;
+console.log(main, secondary);
+
+let temp = main;// temporary variable
+main = secondary;
+secondary = temp;
+console.log(main, secondary);
+*/
+
+//Variant 2, lot easier
+let [main, secondary] = restaurant.categories;
+console.log(main, secondary);
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
+
 /////////--Spread operations--///////////
 /*
 const arr = [1, 2, 3];
@@ -70,10 +90,12 @@ console.log(newMenu);
 */
 
 //////--Iterables: arrays, strings, maps, sets, NOT OBJECTS!!--//////////////
+/*
 const str = 'Svetlana';
 const letters = [...str, ' ', 'M.'];
-console.log(letters); //'S', 'v', 'e',...
+console.log(letters); //'S', 'v','e','t','l','a','n','a',' ','M.'
 console.log(...letters); //S v e t l a n a  M.
+*/
 
 /////--Copy array--////////////
 //const mainMenuCopy = [...restaurant.mainMenu];
@@ -189,3 +211,12 @@ console.log(menu, starters);
 //console.log(i, p, j);
 //const [h = 1, k = 1, l = 1] = [2, 5];
 //console.log(h, k, l);
+
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+}
