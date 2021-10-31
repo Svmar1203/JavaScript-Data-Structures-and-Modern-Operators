@@ -215,6 +215,9 @@ console.log(menu, starters);
 //console.log(i, p, j);
 //const [h = 1, k = 1, l = 1] = [2, 5];
 //console.log(h, k, l);
+
+///////////////--Array with order function--/////////////////
+/*
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
@@ -231,8 +234,54 @@ const restaurant = {
     //);
   },
 };
+*/
 
-////--Receive(получили) 2 return values from a function
-console.log(restaurant.order(1, 1));
+////--Receive(получили) 2 return values from a function--////////////////
+/*
+console.log(restaurant.order(0, 0));
 const [focaccia, pizza] = restaurant.order(0, 0);
 console.log(focaccia, pizza);
+*/
+
+////////////--Nested array, nested destructuring--///////////////
+/*
+const nested = [1, 2, [5, 6]];
+const [a, , [c, d]] = nested;
+console.log(a, c, d);
+*/
+
+////////////--Default values--//////////
+//const [p, h = 1, k = 1] = [88, 44]; //k = 1, h = 1(default value, if we don't know exactly on/not value);
+//console.log(p, h, k);
+
+////////////--Second part with opening hours--//////////////
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function (starderIndex, mainIndex) {
+    return [this.starterMenu[starderIndex], this.mainMenu[mainIndex]];
+    //console.log(
+    `HEY!!!! ${this.starterMenu[starderIndex]}, HELLO## ${this.mainMenu[mainIndex]}`;
+    //);
+  },
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+};
