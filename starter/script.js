@@ -254,7 +254,7 @@ console.log(a, c, d);
 //const [p, h = 1, k = 1] = [88, 44]; //k = 1, h = 1(default value, if we don't know exactly on/not value);
 //console.log(p, h, k);
 
-////////////--Second part with opening hours--//////////////
+////////////--Second part with opening hours--Destructuring OBJECTS--//////////////
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
@@ -285,3 +285,29 @@ const restaurant = {
     },
   },
 };
+
+/////--With objects we need CURLY! braces and we need to specify the NAME!--/////
+////////////////////--Default values--////////////////////////////
+/*
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const {//We want new names of existing properties
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+//Add new #menu# array
+const { menu = [], starterMenu: starters = [] } = restaurant; // menu = []-default value
+console.log(menu, starters); //new array MENU
+*/
+
+///////--Mutating variables--////////////////////
+let a = 999;
+let b = 444;
+
+const obj = { a: 10, b: 20, c: 30 };
+({ a, b } = obj);
+console.log(a, b);
