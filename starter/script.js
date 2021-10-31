@@ -1,6 +1,7 @@
 'use strict';
 
 // Data needed for a later exercise
+/*
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
@@ -11,7 +12,7 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-}
+
   },
   orderDelivery: function ({
     starterIndex = 1,
@@ -51,6 +52,7 @@ restaurant.orderDelivery({
   address: 'Vaiavara',
   starterIndex: 2,
 });
+*/
 
 //const [one, , , four] = restaurant.categories;
 //console.log(`ALLEE!!! ${one}, ${four}`);
@@ -68,10 +70,12 @@ console.log(main, secondary);
 */
 
 //Variant 2, lot easier
+/*
 let [main, secondary] = restaurant.categories;
 console.log(main, secondary);
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
+*/
 
 /////////--Spread operations--///////////
 /*
@@ -211,7 +215,8 @@ console.log(menu, starters);
 //console.log(i, p, j);
 //const [h = 1, k = 1, l = 1] = [2, 5];
 //console.log(h, k, l);
-
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 const restaurant = {
   name: 'Classico Italiano',
@@ -219,4 +224,15 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-}
+  order: function (starderIndex, mainIndex) {
+    return [this.starterMenu[starderIndex], this.mainMenu[mainIndex]];
+    //console.log(
+    `HEY!!!! ${this.starterMenu[starderIndex]}, HELLO## ${this.mainMenu[mainIndex]}`;
+    //);
+  },
+};
+
+////--Receive(получили) 2 return values from a function
+console.log(restaurant.order(1, 1));
+const [focaccia, pizza] = restaurant.order(0, 0);
+console.log(focaccia, pizza);
