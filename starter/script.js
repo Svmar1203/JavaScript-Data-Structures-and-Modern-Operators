@@ -266,10 +266,13 @@ const restaurant = {
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
   order: function (starderIndex, mainIndex) {
     return [this.starterMenu[starderIndex], this.mainMenu[mainIndex]];
-    //console.log(
-    `HEY!!!! ${this.starterMenu[starderIndex]}, HELLO## ${this.mainMenu[mainIndex]}`;
-    //);
   },
+  orderDelivery: function ({ starderIndex, mainIndex, time, address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starderIndex]} and ${this.mainMenu[mainIndex]} will by delivered to ${address} at ${time}`
+    );
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -285,6 +288,13 @@ const restaurant = {
     },
   },
 };
+
+restaurant.orderDelivery({
+  time: '22.30',
+  address: 'Via del Sol',
+  mainIndex: 1,
+  starderIndex: 0,
+});
 
 /////--With objects we need CURLY! braces and we need to specify the NAME!--/////
 ////////////////////--Default values--////////////////////////////
@@ -305,9 +315,19 @@ console.log(menu, starters); //new array MENU
 */
 
 ///////--Mutating variables--////////////////////
+/*
 let a = 999;
 let b = 444;
 
 const obj = { a: 10, b: 20, c: 30 };
 ({ a, b } = obj);
 console.log(a, b);
+
+/////////////--Nested objects--obj in obj in obj--//////
+const { name, openingHours, categories } = restaurant;
+const {
+  fri: { open: o, close: c }, //open = o; close = c
+} = openingHours; //just so syntaxis
+console.log(o, c);
+console.log(`Open hour is: ${o}, close hour is: ${c} `);
+*/
