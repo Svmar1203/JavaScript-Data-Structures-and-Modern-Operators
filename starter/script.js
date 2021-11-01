@@ -277,6 +277,10 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient, otherIngredients);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -299,6 +303,8 @@ restaurant.orderDelivery({
   mainIndex: 1,
   starderIndex: 0,
 });
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 
 /*
 //SPREAD, because on RIGHT side of =
@@ -329,6 +335,9 @@ const add = function (...numbers) {
 add(1, 2, 3);
 add(4, 5, 6, 7);
 add(55, 66, 77, 88);
+
+const x = [5, 2, 3];
+add(...x);
 
 //Real-world example
 /*
