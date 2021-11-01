@@ -272,7 +272,11 @@ const restaurant = {
       `Order received! ${this.starterMenu[starderIndex]} and ${this.mainMenu[mainIndex]} will by delivered to ${address} at ${time}`
     );
   },
-
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -295,6 +299,12 @@ restaurant.orderDelivery({
   mainIndex: 1,
   starderIndex: 0,
 });
+
+const ingredients = [
+  prompt(`Let's make pasta! Ingredient 1: ?`),
+  prompt(`Ingredient 2: ?`),
+  prompt(`Ingredient3: ?`),
+];
 
 /////--With objects we need CURLY! braces and we need to specify the NAME!--/////
 ////////////////////--Default values--////////////////////////////
