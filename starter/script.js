@@ -305,6 +305,25 @@ restaurant.orderDelivery({
 });
 
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+///////////--Return value is true--////////////////////////
+console.log(3 || 'Jonas');
+console.log('', 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+//restaurant.numGuest = 23;
+const guest1 = restaurant.numGuest ? restaurant.numGuest : 111;
+console.log(guest1);
+
+const guest2 = restaurant.numGuest || 10;
+console.log(guest2);
+
+console.log(`------AND---------`); // return value if fullsy
+
+console.log(0 && 'JOnas');
+console.log(7 && 'Jonas');
+console.log('Hello' && 23 && null && 'jonas');
 
 /*
 //SPREAD, because on RIGHT side of =
