@@ -300,6 +300,19 @@ restaurant.orderDelivery({
   starderIndex: 0,
 });
 
+//SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[5, 6, 7]];
+
+//REST, because on left side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
 //Real-world example
 /*
 const ingredients = [
@@ -314,6 +327,7 @@ restaurant.orderPasta(...ingredients); // the same as before!! THIS IS BEST SOLU
 */
 
 //Objects
+/*
 const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Gouseppe' };
 console.log(newRestaurant);
 
@@ -323,6 +337,9 @@ restaurantCopy.name = 'Rome Name';
 console.log(restaurantCopy);
 restaurantCopy.location = 'Vaivara';
 console.log(restaurantCopy);
+console.log(restaurant.name);
+console.log(restaurantCopy.name);
+*/
 
 /////--With objects we need CURLY! braces and we need to specify the NAME!--/////
 ////////////////////--Default values--////////////////////////////
