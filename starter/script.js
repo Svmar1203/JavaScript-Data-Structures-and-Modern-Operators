@@ -300,11 +300,29 @@ restaurant.orderDelivery({
   starderIndex: 0,
 });
 
+//Real-world example
+/*
 const ingredients = [
   prompt(`Let's make pasta! Ingredient 1: ?`),
   prompt(`Ingredient 2: ?`),
   prompt(`Ingredient3: ?`),
 ];
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients); // the same as before!! THIS IS BEST SOLUTION!
+*/
+
+//Objects
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Gouseppe' };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+console.log(restaurantCopy);
+restaurantCopy.name = 'Rome Name';
+console.log(restaurantCopy);
+restaurantCopy.location = 'Vaivara';
+console.log(restaurantCopy);
 
 /////--With objects we need CURLY! braces and we need to specify the NAME!--/////
 ////////////////////--Default values--////////////////////////////
