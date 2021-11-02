@@ -476,6 +476,8 @@ const game = {
 
 const players1 = game.players[0];
 console.log(players1);
+const players1Final = ['Thiago', 'Coutinho', 'Perisic', ...players1];
+console.log(players1Final);
 
 const players2 = game.players[1];
 console.log(players2);
@@ -494,4 +496,6 @@ game.teamPlayer(team2, gk2, fieldPlayers2);
 console.log(`All players in 2 team together are: ${allPlayers}`);
 const { odds } = game;
 console.log(odds);
-const{team1: }
+
+const { team1: o, x: y, team2: z } = odds;
+console.log(o, y, z);
