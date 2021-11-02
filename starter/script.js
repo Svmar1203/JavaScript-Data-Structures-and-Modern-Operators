@@ -255,6 +255,7 @@ console.log(a, c, d);
 //console.log(p, h, k);
 
 ////////////--Second part with opening hours--Destructuring OBJECTS--//////////////
+/*
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
@@ -325,6 +326,9 @@ console.log(0 && 'JOnas');
 console.log(7 && 'Jonas');
 console.log('Hello' && 23 && null && 'jonas');
 
+restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+*/
+////////////////////////////////
 /*
 //SPREAD, because on RIGHT side of =
 const arr = [1, 2, ...[5, 6, 7]];
@@ -343,6 +347,7 @@ const { sat, ...weekdays } = restaurant.openingHours;
 console.log(weekdays);
 */
 
+/*
 const add = function (...numbers) {
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
@@ -357,7 +362,8 @@ add(55, 66, 77, 88);
 
 const x = [5, 2, 3];
 add(...x);
-
+*/
+/////////////////////////////////
 //Real-world example
 /*
 const ingredients = [
@@ -421,3 +427,71 @@ const {
 console.log(o, c);
 console.log(`Open hour is: ${o}, close hour is: ${c} `);
 */
+////////////////////////////////
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+  teamPlayer: function (teams, gks, otherss) {
+    console.log(
+      `In ${teams}, goalkeeaper is ${gks}, and other players are ${otherss}`
+    );
+  },
+};
+
+const players1 = game.players[0];
+console.log(players1);
+
+const players2 = game.players[1];
+console.log(players2);
+
+const [gk, ...fieldPlayers] = game.players[0];
+const [gk2, ...fieldPlayers2] = game.players[1];
+const team1 = game.team1;
+const team2 = game.team2;
+console.log(team1);
+console.log(gk, fieldPlayers);
+
+const allPlayers = [...game.players[0], ...game.players[1]];
+console.log(allPlayers);
+game.teamPlayer(team1, gk, fieldPlayers);
+game.teamPlayer(team2, gk2, fieldPlayers2);
+console.log(`All players in 2 team together are: ${allPlayers}`);
+const { odds } = game;
+console.log(odds);
+const{team1: }
