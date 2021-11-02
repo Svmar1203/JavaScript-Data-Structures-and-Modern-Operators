@@ -472,7 +472,14 @@ const game = {
       `In ${teams}, goalkeeaper is ${gks}, and other players are ${otherss}`
     );
   },
+  printsGoal: function (goal) {
+    for (let i = 0; i < game.scored.length; i++) {
+      console.log(`${game.scored[i]} goal is: ${goal}`);
+    }
+  },
 };
+
+game.printsGoal(1);
 
 const players1 = game.players[0];
 console.log(players1);
