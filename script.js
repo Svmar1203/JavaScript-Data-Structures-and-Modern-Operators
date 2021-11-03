@@ -12,8 +12,6 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-
-  },
   orderDelivery: function ({
     starterIndex = 1,
     mainIndex = 0,
@@ -41,6 +39,15 @@ const restaurant = {
   },
 };
 
+const main = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const item of main) console.log(item);
+
+for (const [i, el] of main.entries()) {
+  console.log(`${i + 1} ${el}`); //${item[0]+1} ${item[1]}
+}
+*/
+
+/*
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Street via Sole',
@@ -518,8 +525,10 @@ console.log(win);
 
 game.allPlayyers(2);
 */
+
 ///////////--SOLUTION FROM JONAS--///////////////
 // 1.
+/*
 const [players1, players2] = game.players; //destructuring array
 console.log(players1, players2);
 console.log(`This is array 1: ${players1}`);
@@ -538,6 +547,7 @@ console.log(`In second team goalkeeper is ${gk2}, others are ${others2}`);
 const allPlayers = [...players1, ...players2];
 console.log(allPlayers);
 console.log(`All Players from 2 teams: ${allPlayers} `);
+for (const item1 of allPlayers) console.log(item1);
 
 // 4.
 const players1Final = [...players1, 'Thiago', 'Couthinio', 'Perisinc'];
@@ -561,3 +571,67 @@ printGoals('Gnarby', 'Lewandowski');
 // 7.
 team1 < team2 && console.log(`Team 1 is more likely to win`);
 team1 > team2 && console.log(`Team 2 is more likely to win`);
+*/
+//////////////////////////////////////
+
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  [weekdays[1]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+console.log(openingHours);
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  orderDelivery({ starterIndex = 1, mainIndex = 0, address, time = '22.00' }) {
+    // no need function!!
+    console.log(
+      `Order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will by delivered to ${address} at time ${time}`
+    );
+  },
+  orderPasta(ing1, ing2, ing3) {
+    // dont need function
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+  orderPizza(mainIngredient, ...otherIngredients) {
+    // without function
+    console.log(mainIngredient, otherIngredients);
+  },
+  openingHours, // just wrote name of array
+};
+
+console.log(restaurant);
+
+//if (restaurant.openingHours && restaurant.openingHours.mon)
+//console.log(restaurant.openingHours.mon);
+
+//console.log (restaurant.openingHours.mon?.open);
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day} we open at ${open}`);
+}
+
+console.log(restaurant.orderFood?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderPizza?.() ?? 'Not exist that methods');
