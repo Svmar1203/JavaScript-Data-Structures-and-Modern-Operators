@@ -472,6 +472,10 @@ const game = {
       `In ${teams}, goalkeeaper is ${gks}, and other players are ${otherss}`
     );
   },
+  allPlayyers: function (index) {
+    const playerName = this.players[0][index];
+    console.log(playerName);
+  },
   printsGoal: function (goal) {
     for (let i = 0; i < game.scored.length; i++) {
       console.log(`${game.scored[i]} goal is: ${goal}`);
@@ -479,6 +483,8 @@ const game = {
   },
 };
 
+////////////////////////////
+/*
 game.printsGoal(1);
 
 const players1 = game.players[0];
@@ -509,3 +515,26 @@ console.log(o, y, z);
 
 const win = team1 > team2 || 'Winner team2';
 console.log(win);
+
+game.allPlayyers(2);
+*/
+///////////--SOLUTION FROM JONAS--///////////////
+// 1.
+const [players1, players2] = game.players; //destructuring array
+console.log(players1, players2);
+console.log(`This is array 1: ${players1}`);
+console.log(`This is array 2: ${players2}`);
+
+// 2.
+const [gk, ...others] = players1; // first array
+console.log(gk, others);
+console.log(`Goalkeeper is ${gk} and others are ${others}`);
+
+const [gk2, ...others2] = players2; // second array
+console.log(gk2, others2);
+console.log(`In second team goalkeeper is ${gk2}, others are ${others2}`);
+
+// 3.
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+console.log(`All Players from 2 teams: ${allPlayers} `);
