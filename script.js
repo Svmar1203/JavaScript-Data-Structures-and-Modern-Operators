@@ -538,3 +538,26 @@ console.log(`In second team goalkeeper is ${gk2}, others are ${others2}`);
 const allPlayers = [...players1, ...players2];
 console.log(allPlayers);
 console.log(`All Players from 2 teams: ${allPlayers} `);
+
+// 4.
+const players1Final = [...players1, 'Thiago', 'Couthinio', 'Perisinc'];
+console.log(players1Final);
+console.log(`All finalteam from team 1: ${players1Final}`);
+
+// 5.
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(draw);
+
+// 6.
+const printGoals = function (...players) {
+  console.log(`${players.length}  goals were scored by ${players}`);
+};
+
+printGoals('Coman', 'Muller', 'Gnarby', 'Lewandowski'); // count of goals depend of number players
+printGoals('Gnarby', 'Lewandowski');
+
+// 7.
+team1 < team2 && console.log(`Team 1 is more likely to win`);
+team1 > team2 && console.log(`Team 2 is more likely to win`);
