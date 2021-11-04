@@ -490,6 +490,31 @@ const game = {
   },
 };
 
+//1.
+const goalPlayer = Object.entries(game.scored);
+
+for (const [i, el] of goalPlayer) {
+  console.log(`Goal  ${Number(i) + 1}: ${el}`);
+}
+
+for (const [j, playerr] of game.scored.entries())
+  console.log(`Goal ${j + 1}: ${playerr}`);
+
+// 2.
+
+let aver = 0;
+const odds = Object.values(game.odds);
+for (const odd of odds) aver += odd;
+aver /= odds.length;
+
+console.log(aver);
+
+//3.
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'drow' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr}: ${odd}`);
+}
+
 ////////////////////////////
 /*
 game.printsGoal(1);
@@ -664,3 +689,26 @@ for (const [key, { open, close }] of allValues) {
   // allProp = [key, {open, close}]
   console.log(`On ${key} we are open at ${open} and close at ${close}`);
 }
+
+console.log(`Odd of victory ${game.team1}: ${game.odds.team1}`);
+console.log(`Odd of draw: ${game.odds.x}`);
+console.log(`Odd of victory ${game.team2}: ${game.odds.team2} `);
+const oddsValue = Object.values(game.odds);
+
+let sum = 0;
+for (const one of oddsValue) {
+  sum += one;
+}
+const a = sum / 3;
+console.log(a);
+console.log(`Average of odds is  ${sum / 3}`);
+
+console.log(game.scored);
+const { scored } = game;
+console.log(scored);
+
+const scorers = {
+  scored,
+};
+
+console.log(scorers);
