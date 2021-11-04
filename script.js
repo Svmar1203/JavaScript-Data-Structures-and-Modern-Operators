@@ -625,13 +625,42 @@ console.log(restaurant);
 
 //console.log (restaurant.openingHours.mon?.open);
 
-const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const prpoperties = Object.keys(openingHours);
 
-for (const day of days) {
-  console.log(day);
-  const open = restaurant.openingHours[day]?.open ?? 'closed';
-  console.log(`On ${day} we open at ${open}`);
+console.log(
+  `We are open ${prpoperties.length} days in week, this is a ${prpoperties}`
+);
+
+let openStr = `We are open ${prpoperties.length} days in week:`;
+
+for (const day of prpoperties) {
+  openStr += `  ${day}`;
+}
+
+console.log(openStr);
+
+const values = Object.values(openingHours);
+console.log(values);
+
+for (const openVal of values) {
+  console.log(openVal);
 }
 
 console.log(restaurant.orderFood?.(0, 1) ?? 'Method does not exist');
+
 console.log(restaurant.orderPizza?.() ?? 'Not exist that methods');
+console.log(restaurant.orderPasta?.('chees', 'food', 'water')) ?? 'Not exist';
+
+const arr1 = [{ name: 'Yana', age: 23, job: 'programmer' }];
+
+console.log(arr1[0]?.job ?? 'Not exist');
+
+/////////--Entire object--//////////////
+Object.entries(openingHours);
+
+const allValues = Object.entries(openingHours);
+
+for (const [key, { open, close }] of allValues) {
+  // allProp = [key, {open, close}]
+  console.log(`On ${key} we are open at ${open} and close at ${close}`);
+}
