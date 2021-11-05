@@ -106,10 +106,10 @@ for (const [key, value] of question) {
   }
 }
 
-const answer = Number(prompt('Your answer: '));
-console.log(answer);
+//const answer = Number(prompt('Your answer: '));
+//console.log(answer);
 
-console.log(question.get(question.get('correct') === answer));
+//console.log(question.get(question.get('correct') === answer));
 
 /////--Convert map to array--//////////
 console.log([...question]);
@@ -130,3 +130,18 @@ const gameEvents = new Map([
   [80, 'GOAL'],
   [92, 'Yellow card'],
 ]);
+
+console.log([...gameEvents.values()]);
+const events = [...gameEvents.values()];
+console.log(events);
+
+const eventsNew = new Set(events);
+console.log(eventsNew);
+const eventsArr = [...eventsNew];
+console.log(eventsArr);
+gameEvents.delete(64);
+console.log(gameEvents);
+console.log(gameEvents.size);
+const average = 90 / gameEvents.size;
+console.log(average);
+console.log(`An event happened, on average, every ${average} minutes`);
