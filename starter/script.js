@@ -5,6 +5,7 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+/*
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -152,6 +153,7 @@ const timee = [...gameEvents.keys()];
 console.log(timee);
 console.log(timee.length);
 console.log(timee.pop());
+*/
 
 /*
 for (const [keyy, valuee] of gameEvents) {
@@ -163,7 +165,20 @@ for (const [keyy, valuee] of gameEvents) {
 }
 */
 
+/*
 for (const [min, eventss] of gameEvents) {
   const half = min <= 45 ? 'FIRST' : 'SECOND';
   console.log(`[${half} HALF]: ${min}: ${eventss}`);
 }
+*/
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+console.log(airline.length);
+console.log('B737'.length);
+console.log(airline.indexOf('r'));
