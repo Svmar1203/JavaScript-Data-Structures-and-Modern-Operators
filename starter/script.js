@@ -150,11 +150,20 @@ console.log(average);
 console.log(`An event happened, on average, every ${average} minutes`);
 const timee = [...gameEvents.keys()];
 console.log(timee);
+console.log(timee.length);
+console.log(timee.pop());
 
+/*
 for (const [keyy, valuee] of gameEvents) {
   if (
     keyy <= 45
       ? console.log(`[FIRST HALF] ${keyy}: ${valuee}`)
       : console.log(`[second half] ${keyy}: ${valuee}`)
   );
+}
+*/
+
+for (const [min, eventss] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF]: ${min}: ${eventss}`);
 }
