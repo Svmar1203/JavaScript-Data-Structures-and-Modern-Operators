@@ -182,3 +182,6 @@ console.log('B737'[0]);
 console.log(airline.length);
 console.log('B737'.length);
 console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('portugal')); // -1, because portugal with lower case not exist, Portugal!
+console.log(airline.indexOf('Portugal'));
