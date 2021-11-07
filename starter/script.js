@@ -130,9 +130,12 @@ const gameEvents = new Map([
   [80, 'GOAL'],
   [92, 'Yellow card'],
 ]);
+console.log(gameEvents.size);
 
-console.log([...gameEvents.values()]);
-const events = [...gameEvents.values()];
+console.log(Object.entries(...gameEvents));
+
+console.log(gameEvents.values());
+const events = gameEvents.values();
 console.log(events);
 
 const eventsNew = new Set(events);
@@ -145,3 +148,13 @@ console.log(gameEvents.size);
 const average = 90 / gameEvents.size;
 console.log(average);
 console.log(`An event happened, on average, every ${average} minutes`);
+const timee = [...gameEvents.keys()];
+console.log(timee);
+
+for (const [keyy, valuee] of gameEvents) {
+  if (
+    keyy <= 45
+      ? console.log(`[FIRST HALF] ${keyy}: ${valuee}`)
+      : console.log(`[second half] ${keyy}: ${valuee}`)
+  );
+}
