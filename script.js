@@ -1,27 +1,17 @@
 'use strict';
 
 // Data needed for a later exercise
-/*
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+/*
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    address,
-    time = '22.00',
-  }) {
-    console.log(
-      `Order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will by delivered to ${address} at time ${time}`
-    );
-  },
 
   openingHours: {
     thu: {
@@ -39,676 +29,228 @@ const restaurant = {
   },
 };
 
-const main = [...restaurant.starterMenu, ...restaurant.mainMenu];
-for (const item of main) console.log(item);
+const orderSet = new Set(['Pizza', 'Pasta', 'Risotto', 'Pizza', 'Pasta']);
+console.log(orderSet);
+console.log(orderSet.size); //number of diferent names
+console.log(orderSet.has('Pizza')); // has or not, true or false
+console.log(orderSet.has('Chocolate'));
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+//orderSet.delete('Risotto');
+//console.log(orderSet);
+//orderSet.clear();
+//console.log(orderSet);
 
-for (const [i, el] of main.entries()) {
-  console.log(`${i + 1} ${el}`); //${item[0]+1} ${item[1]}
-}
-*/
+//console.log(new Set('Svetlana'));
 
-/*
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Street via Sole',
-  mainIndex: 2,
-  starterIndex: 1,
-});
+for (const order of orderSet) console.log(order);
 
-restaurant.orderDelivery({
-  address: 'Vaiavara',
-  starterIndex: 2,
-});
-*/
+const staff = ['Waiter', 'Chef', 'Waiter', 'Chef', 'Manager', 'Waiter'];
+const stafNew = new Set(staff);
+console.log(stafNew);
+const stafSecond = [...new Set(staff)];
+console.log(stafSecond);
+console.log(new Set('svetlanasvetasv').size);
 
-//const [one, , , four] = restaurant.categories;
-//console.log(`ALLEE!!! ${one}, ${four}`);
-///////////////////////
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+console.log(rest);
 
-//Variant 1, with temporary variable in middle
-/*
-let [main, secondary] = restaurant.categories;
-console.log(main, secondary);
+//set method return updated array
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are closed :(');
+console.log(rest);
 
-let temp = main;// temporary variable
-main = secondary;
-secondary = temp;
-console.log(main, secondary);
-*/
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(false));
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+console.log(rest.has('categories'));
+rest.delete(2);
+const arr = [1, 2];
+rest.set(arr, 'Test');
+console.log(rest.get(arr));
+console.log(rest);
+console.log(rest.size);
+rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
+//rest.clear();
+//console.log(rest);
 
-//Variant 2, lot easier
-/*
-let [main, secondary] = restaurant.categories;
-console.log(main, secondary);
-[main, secondary] = [secondary, main];
-console.log(main, secondary);
-*/
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct!'],
+  [false, 'Try again'],
+]);
 
-/////////--Spread operations--///////////
-/*
-const arr = [1, 2, 3];
-const badArr = [5, 6, arr[0], arr[1], arr[2]];
-console.log(badArr);
+console.log(question);
+console.log(Object.entries(restaurant.openingHours));
+const restMap = new Map(Object.entries(restaurant.openingHours));
+console.log(restMap);
 
-const goodArr = [8, 9, ...arr];
-console.log(goodArr);
-
-const otherArr = [7, 5, ...badArr];
-console.log(otherArr);
-
-const newMenu = [...restaurant.mainMenu, 'Fish'];
-console.log(newMenu);
-*/
-
-//////--Iterables: arrays, strings, maps, sets, NOT OBJECTS!!--//////////////
-/*
-const str = 'Svetlana';
-const letters = [...str, ' ', 'M.'];
-console.log(letters); //'S', 'v','e','t','l','a','n','a',' ','M.'
-console.log(...letters); //S v e t l a n a  M.
-*/
-
-/////--Copy array--////////////
-//const mainMenuCopy = [...restaurant.mainMenu];
-//console.log(mainMenuCopy);
-
-//////--Join 2 Arrays--////////
-/*
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(menu);
-*/
-
-/////--ARRAY--////////////
-/*
-const { name, categories, openingHours } = restaurant;
-console.log(name, categories, openingHours);
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);*/
-
-////--Default values--/////
-/*
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
-*/
-
-//////--Mutating variables--///////////
-/*
-let a = 222;
-let b = 40;
-const obj = { a: 10, b: 15, c: 20 };
-({ a, b } = obj); // requared parentheses!!
-console.log(a, b);
-*/
-
-///////--Nested objects--//////////
-/*
-const {
-  fri: { open, close },
-} = openingHours;
-console.log(open, close);
-*/
-/*
-const {
-  fri: { open: c, close: d },
-} = openingHours;
-console.log(c, d);
-*/
-
-/*
-console.log(restaurant.order(3, 0));
-const [starter, main] = restaurant.order(3, 0);
-console.log(starter, main);
-*/
-
-///////////////////
-/*
-const arr = [2, 3, 4];
-const a = arr[0];
-const b = arr[1];
-const c = arr[2];
-
-const [x, y, z] = arr;
-console.log(x, y, z);
-*/
-/////////////////////
-/*
-let [main, secondary] = restaurant.categories;
-console.log(main, secondary);
-*/
-////////////////////////
-/*
-//Switching variables num.1
-const temp = main;
-main = secondary;
-secondary = temp;
-console.log(main, temp);
-*/
-/////////////////
-//Switcing variables num.2
-/*
-[main, secondary] = [secondary, main];
-console.log(main, secondary);
-*/
-//////////////
-/*
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
-
-const {
-  name: restorauntName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restorauntName, hours, tags);
-console.log(restaurant);
-*/
-
-/*
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
-*/
-////////--NESTED DESTRUCTURING--////
-//const nested = [2, 4, [7, 8]];
-//const [i, , j] = nested;
-//const [i, , [b, k]] = nested;
-//console.log(i, b, k);
-
-//////////--DEFAULT VALUES--/////
-//const [i, p, j = 1] = [8, 9];
-//console.log(i, p, j);
-//const [h = 1, k = 1, l = 1] = [2, 5];
-//console.log(h, k, l);
-
-///////////////--Array with order function--/////////////////
-/*
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starderIndex, mainIndex) {
-    return [this.starterMenu[starderIndex], this.mainMenu[mainIndex]];
-    //console.log(
-    `HEY!!!! ${this.starterMenu[starderIndex]}, HELLO## ${this.mainMenu[mainIndex]}`;
-    //);
-  },
-};
-*/
-
-////--Receive(получили) 2 return values from a function--////////////////
-/*
-console.log(restaurant.order(0, 0));
-const [focaccia, pizza] = restaurant.order(0, 0);
-console.log(focaccia, pizza);
-*/
-
-////////////--Nested array, nested destructuring--///////////////
-/*
-const nested = [1, 2, [5, 6]];
-const [a, , [c, d]] = nested;
-console.log(a, c, d);
-*/
-
-////////////--Default values--//////////
-//const [p, h = 1, k = 1] = [88, 44]; //k = 1, h = 1(default value, if we don't know exactly on/not value);
-//console.log(p, h, k);
-
-////////////--Second part with opening hours--Destructuring OBJECTS--//////////////
-/*
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starderIndex, mainIndex) {
-    return [this.starterMenu[starderIndex], this.mainMenu[mainIndex]];
-  },
-  orderDelivery: function ({ starderIndex, mainIndex, time, address }) {
-    console.log(
-      `Order received! ${this.starterMenu[starderIndex]} and ${this.mainMenu[mainIndex]} will by delivered to ${address} at ${time}`
-    );
-  },
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
-  orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient, otherIngredients);
-  },
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-};
-
-restaurant.orderDelivery({
-  time: '22.30',
-  address: 'Via del Sol',
-  mainIndex: 1,
-  starderIndex: 0,
-});
-
-restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
-///////////--Return value is true--////////////////////////
-console.log(3 || 'Jonas');
-console.log('', 'Jonas');
-console.log(true || 0);
-console.log(undefined || null);
-console.log(undefined || 0 || '' || 'Hello' || 23 || null);
-
-//restaurant.numGuest = 23;
-const guest1 = restaurant.numGuest ? restaurant.numGuest : 111;
-console.log(guest1);
-
-const guest2 = restaurant.numGuest || 10;
-console.log(guest2);
-
-console.log(`------AND---------`); // return value if fullsy
-
-console.log(0 && 'JOnas');
-console.log(7 && 'Jonas');
-console.log('Hello' && 23 && null && 'jonas');
-
-restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
-*/
-////////////////////////////////
-/*
-//SPREAD, because on RIGHT side of =
-const arr = [1, 2, ...[5, 6, 7]];
-
-//REST, because on left side of =
-const [a, b, ...others] = [1, 2, 3, 4, 5];
-console.log(a, b, others);
-
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, risotto, otherFood);
-
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(weekdays);
-*/
-
-/*
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-  {
-    console.log(sum);
+//Quiz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
   }
-};
-
-add(1, 2, 3);
-add(4, 5, 6, 7);
-add(55, 66, 77, 88);
-
-const x = [5, 2, 3];
-add(...x);
-*/
-/////////////////////////////////
-//Real-world example
-/*
-const ingredients = [
-  prompt(`Let's make pasta! Ingredient 1: ?`),
-  prompt(`Ingredient 2: ?`),
-  prompt(`Ingredient3: ?`),
-];
-console.log(ingredients);
-
-restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
-restaurant.orderPasta(...ingredients); // the same as before!! THIS IS BEST SOLUTION!
-*/
-
-//Objects
-/*
-const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Gouseppe' };
-console.log(newRestaurant);
-
-const restaurantCopy = { ...restaurant };
-console.log(restaurantCopy);
-restaurantCopy.name = 'Rome Name';
-console.log(restaurantCopy);
-restaurantCopy.location = 'Vaivara';
-console.log(restaurantCopy);
-console.log(restaurant.name);
-console.log(restaurantCopy.name);
-*/
-
-/////--With objects we need CURLY! braces and we need to specify the NAME!--/////
-////////////////////--Default values--////////////////////////////
-/*
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
-
-const {//We want new names of existing properties
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
-
-//Add new #menu# array
-const { menu = [], starterMenu: starters = [] } = restaurant; // menu = []-default value
-console.log(menu, starters); //new array MENU
-*/
-
-///////--Mutating variables--////////////////////
-/*
-let a = 999;
-let b = 444;
-
-const obj = { a: 10, b: 20, c: 30 };
-({ a, b } = obj);
-console.log(a, b);
-
-/////////////--Nested objects--obj in obj in obj--//////
-const { name, openingHours, categories } = restaurant;
-const {
-  fri: { open: o, close: c }, //open = o; close = c
-} = openingHours; //just so syntaxis
-console.log(o, c);
-console.log(`Open hour is: ${o}, close hour is: ${c} `);
-*/
-////////////////////////////////
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-  teamPlayer: function (teams, gks, otherss) {
-    console.log(
-      `In ${teams}, goalkeeaper is ${gks}, and other players are ${otherss}`
-    );
-  },
-  allPlayyers: function (index) {
-    const playerName = this.players[0][index];
-    console.log(playerName);
-  },
-  printsGoal: function (goal) {
-    for (let i = 0; i < game.scored.length; i++) {
-      console.log(`${game.scored[i]} goal is: ${goal}`);
-    }
-  },
-};
-
-//1.
-const goalPlayer = Object.entries(game.scored);
-
-for (const [i, el] of goalPlayer) {
-  console.log(`Goal  ${Number(i) + 1}: ${el}`);
 }
 
-for (const [j, playerr] of game.scored.entries())
-  console.log(`Goal ${j + 1}: ${playerr}`);
+//const answer = Number(prompt('Your answer: '));
+//console.log(answer);
 
-// 2.
+//console.log(question.get(question.get('correct') === answer));
 
-let aver = 0;
-const odds = Object.values(game.odds);
-for (const odd of odds) aver += odd;
-aver /= odds.length;
+/////--Convert map to array--//////////
+console.log([...question]);
+console.log(question.entries());
+console.log([...question.keys()]);
+console.log(question.values());
 
-console.log(aver);
+const gameEvents = new Map([
+  [17, 'GOAL'],
+  [36, 'Substitution'],
+  [47, 'GOAL'],
+  [61, 'Substitution'],
+  [64, 'Yellow card'],
+  [69, 'Red card'],
+  [70, 'Substitution'],
+  [72, 'Substitution'],
+  [76, 'GOAL'],
+  [80, 'GOAL'],
+  [92, 'Yellow card'],
+]);
+console.log(gameEvents.size);
 
-//3.
-for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStr = team === 'x' ? 'drow' : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStr}: ${odd}`);
-}
+console.log(Object.entries(...gameEvents));
 
-////////////////////////////
-/*
-game.printsGoal(1);
+console.log(gameEvents.values());
+const events = gameEvents.values();
+console.log(events);
 
-const players1 = game.players[0];
-console.log(players1);
-const players1Final = ['Thiago', 'Coutinho', 'Perisic', ...players1];
-console.log(players1Final);
-
-const players2 = game.players[1];
-console.log(players2);
-
-const [gk, ...fieldPlayers] = game.players[0];
-const [gk2, ...fieldPlayers2] = game.players[1];
-const team1 = game.team1;
-const team2 = game.team2;
-console.log(team1);
-console.log(gk, fieldPlayers);
-
-const allPlayers = [...game.players[0], ...game.players[1]];
-console.log(allPlayers);
-game.teamPlayer(team1, gk, fieldPlayers);
-game.teamPlayer(team2, gk2, fieldPlayers2);
-console.log(`All players in 2 team together are: ${allPlayers}`);
-const { odds } = game;
-console.log(odds);
-
-const { team1: o, x: y, team2: z } = odds;
-console.log(o, y, z);
-
-const win = team1 > team2 || 'Winner team2';
-console.log(win);
-
-game.allPlayyers(2);
+const eventsNew = new Set(events);
+console.log(eventsNew);
+const eventsArr = [...eventsNew];
+console.log(eventsArr);
+gameEvents.delete(64);
+console.log(gameEvents);
+console.log(gameEvents.size);
+const average = 90 / gameEvents.size;
+console.log(average);
+console.log(`An event happened, on average, every ${average} minutes`);
+const timee = [...gameEvents.keys()];
+console.log(timee);
+console.log(timee.length);
+console.log(timee.pop());
 */
 
-///////////--SOLUTION FROM JONAS--///////////////
-// 1.
 /*
-const [players1, players2] = game.players; //destructuring array
-console.log(players1, players2);
-console.log(`This is array 1: ${players1}`);
-console.log(`This is array 2: ${players2}`);
-
-// 2.
-const [gk, ...others] = players1; // first array
-console.log(gk, others);
-console.log(`Goalkeeper is ${gk} and others are ${others}`);
-
-const [gk2, ...others2] = players2; // second array
-console.log(gk2, others2);
-console.log(`In second team goalkeeper is ${gk2}, others are ${others2}`);
-
-// 3.
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
-console.log(`All Players from 2 teams: ${allPlayers} `);
-for (const item1 of allPlayers) console.log(item1);
-
-// 4.
-const players1Final = [...players1, 'Thiago', 'Couthinio', 'Perisinc'];
-console.log(players1Final);
-console.log(`All finalteam from team 1: ${players1Final}`);
-
-// 5.
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(draw);
-
-// 6.
-const printGoals = function (...players) {
-  console.log(`${players.length}  goals were scored by ${players}`);
-};
-
-printGoals('Coman', 'Muller', 'Gnarby', 'Lewandowski'); // count of goals depend of number players
-printGoals('Gnarby', 'Lewandowski');
-
-// 7.
-team1 < team2 && console.log(`Team 1 is more likely to win`);
-team1 > team2 && console.log(`Team 2 is more likely to win`);
+for (const [keyy, valuee] of gameEvents) {
+  if (
+    keyy <= 45
+      ? console.log(`[FIRST HALF] ${keyy}: ${valuee}`)
+      : console.log(`[second half] ${keyy}: ${valuee}`)
+  );
+}
 */
-//////////////////////////////////////
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+/*
+for (const [min, eventss] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF]: ${min}: ${eventss}`);
+}
+*/
 
-const openingHours = {
-  [weekdays[1]]: {
-    open: 12,
-    close: 22,
-  },
-  [weekdays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  sat: {
-    open: 0, // Open 24 hours
-    close: 24,
-  },
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+console.log(airline.length);
+console.log('B737'.length);
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('portugal')); // -1, because portugal with lower case not exist, Portugal!
+console.log(airline.indexOf('Portugal'));
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+console.log(airline.slice(1, -1));
+console.log(plane.slice(-1));
+
+const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat');
+  else console.log('You got lucky!!');
 };
 
-console.log(openingHours);
+checkMiddleSeat('11B');
+checkMiddleSeat('23E');
+checkMiddleSeat('23C');
+console.log(new String('jonas'));
+const jonas = new String('jonas');
+console.log(jonas);
+console.log(jonas[0]);
+console.log(jonas[2]);
+console.log(typeof jonas);
 
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  orderDelivery({ starterIndex = 1, mainIndex = 0, address, time = '22.00' }) {
-    // no need function!!
-    console.log(
-      `Order recived! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will by delivered to ${address} at time ${time}`
-    );
-  },
-  orderPasta(ing1, ing2, ing3) {
-    // dont need function
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
-  orderPizza(mainIngredient, ...otherIngredients) {
-    // without function
-    console.log(mainIngredient, otherIngredients);
-  },
-  openingHours, // just wrote name of array
+//Fix capitalization in name
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+const passenger = 'JoNAs';
+const passengerLower = passenger.toLowerCase();
+console.log(passengerLower);
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const checkNmae = function (name) {
+  const nameLower = name.toLowerCase();
+  console.log(nameLower);
+  const nameCorrect = nameLower[0].toUpperCase() + nameLower.slice(1);
+  console.log(nameCorrect);
 };
 
-console.log(restaurant);
+checkNmae('SVEtlaNa');
 
-//if (restaurant.openingHours && restaurant.openingHours.mon)
-//console.log(restaurant.openingHours.mon);
-
-//console.log (restaurant.openingHours.mon?.open);
-
-const prpoperties = Object.keys(openingHours);
-
-console.log(
-  `We are open ${prpoperties.length} days in week, this is a ${prpoperties}`
-);
-
-let openStr = `We are open ${prpoperties.length} days in week:`;
-
-for (const day of prpoperties) {
-  openStr += `  ${day}`;
+//Comparing emails
+const email = 'hello@jonas.io';
+const loginEmail = ' HeLLo@JoNas.IO \n';
+const lowerEmail = loginEmail.toLowerCase();
+console.log(lowerEmail);
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+const normalizedEmail = lowerEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+if (email === normalizedEmail) {
+  console.log('ok');
+} else {
+  console.log('Not ok');
 }
 
-console.log(openStr);
+//replacing
+const priceGB = '288,25&';
+const priceUS = priceGB.replace('&', '$').replace(',', '.');
+console.log(priceUS);
 
-const values = Object.values(openingHours);
-console.log(values);
-
-for (const openVal of values) {
-  console.log(openVal);
-}
-
-console.log(restaurant.orderFood?.(0, 1) ?? 'Method does not exist');
-
-console.log(restaurant.orderPizza?.() ?? 'Not exist that methods');
-console.log(restaurant.orderPasta?.('chees', 'food', 'water')) ?? 'Not exist';
-
-const arr1 = [{ name: 'Yana', age: 23, job: 'programmer' }];
-
-console.log(arr1[0]?.job ?? 'Not exist');
-
-/////////--Entire object--//////////////
-Object.entries(openingHours);
-
-const allValues = Object.entries(openingHours);
-
-for (const [key, { open, close }] of allValues) {
-  // allProp = [key, {open, close}]
-  console.log(`On ${key} we are open at ${open} and close at ${close}`);
-}
-
-console.log(`Odd of victory ${game.team1}: ${game.odds.team1}`);
-console.log(`Odd of draw: ${game.odds.x}`);
-console.log(`Odd of victory ${game.team2}: ${game.odds.team2} `);
-const oddsValue = Object.values(game.odds);
-
-let sum = 0;
-for (const one of oddsValue) {
-  sum += one;
-}
-const a = sum / 3;
-console.log(a);
-console.log(`Average of odds is  ${sum / 3}`);
-
-console.log(game.scored);
-const { scored } = game;
-console.log(scored);
-
-const scorers = {
-  scored,
-};
-
-console.log(scorers);
+const announcment =
+  'All passengers come to boarding door 23. Boarding door 23!';
+//const announcmentCorrect = announcment.replace('door', 'gate');
+//console.log(announcmentCorrect);
+const announ = announcment.replace(/door/g, 'gate');
+console.log(announ);
