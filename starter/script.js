@@ -5,6 +5,7 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+/*
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -152,6 +153,7 @@ const timee = [...gameEvents.keys()];
 console.log(timee);
 console.log(timee.length);
 console.log(timee.pop());
+*/
 
 /*
 for (const [keyy, valuee] of gameEvents) {
@@ -163,7 +165,116 @@ for (const [keyy, valuee] of gameEvents) {
 }
 */
 
+/*
 for (const [min, eventss] of gameEvents) {
   const half = min <= 45 ? 'FIRST' : 'SECOND';
   console.log(`[${half} HALF]: ${min}: ${eventss}`);
 }
+*/
+/*
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+console.log(airline.length);
+console.log('B737'.length);
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('portugal')); // -1, because portugal with lower case not exist, Portugal!
+console.log(airline.indexOf('Portugal'));
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+console.log(airline.slice(1, -1));
+console.log(plane.slice(-1));
+
+const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat');
+  else console.log('You got lucky!!');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23E');
+checkMiddleSeat('23C');
+console.log(new String('jonas'));
+const jonas = new String('jonas');
+console.log(jonas);
+console.log(jonas[0]);
+console.log(jonas[2]);
+console.log(typeof jonas);
+
+//Fix capitalization in name
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+const passenger = 'JoNAs';
+const passengerLower = passenger.toLowerCase();
+console.log(passengerLower);
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const checkNmae = function (name) {
+  const nameLower = name.toLowerCase();
+  console.log(nameLower);
+  const nameCorrect = nameLower[0].toUpperCase() + nameLower.slice(1);
+  console.log(nameCorrect);
+};
+
+checkNmae('SVEtlaNa');
+
+//Comparing emails
+const email = 'hello@jonas.io';
+const loginEmail = ' HeLLo@JoNas.IO \n';
+const lowerEmail = loginEmail.toLowerCase();
+console.log(lowerEmail);
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+const normalizedEmail = lowerEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+if (email === normalizedEmail) {
+  console.log('ok');
+} else {
+  console.log('Not ok');
+}
+
+//replacing
+const priceGB = '288,25&';
+const priceUS = priceGB.replace('&', '$').replace(',', '.');
+console.log(priceUS);
+*/
+
+const announcment =
+  'All passengers come to boarding door 23. Boarding door 23!';
+//const announcmentCorrect = announcment.replace('door', 'gate');
+//console.log(announcmentCorrect);
+const announ = announcment.replace(/door/g, 'gate');
+console.log(announ);
+const planes = 'Airbus320neo';
+console.log(planes.includes('A320'));
+console.log(planes.includes('Boeing'));
+console.log(planes.startsWith('A3')); // starts with some first letters
+
+if (planes.startsWith('Airbus') && planes.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family');
+} else {
+  console.log('This is not NEW part of Airbus family');
+}
+
+const checkBaggage = function (item) {
+  const baggage = item.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome on board!');
+  }
+};
+
+checkBaggage('I have laptop, some Food and a pocket Knife');
+checkBaggage('Socks and kamera');
+checkBaggage('Got some snacks and a gun for protection');
