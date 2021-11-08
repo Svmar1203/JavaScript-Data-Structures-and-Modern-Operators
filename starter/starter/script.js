@@ -195,7 +195,50 @@ console.log(plane.slice(-1));
 const checkMiddleSeat = function (seat) {
   const s = seat.slice(-1);
   if (s === 'B' || s === 'E') console.log('You got the middle seat');
+  else console.log('You got lucky!!');
 };
 
 checkMiddleSeat('11B');
 checkMiddleSeat('23E');
+checkMiddleSeat('23C');
+console.log(new String('jonas'));
+const jonas = new String('jonas');
+console.log(jonas);
+console.log(jonas[0]);
+console.log(jonas[2]);
+console.log(typeof jonas);
+
+//Fix capitalization in name
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+const passenger = 'JoNAs';
+const passengerLower = passenger.toLowerCase();
+console.log(passengerLower);
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const checkNmae = function (name) {
+  const nameLower = name.toLowerCase();
+  console.log(nameLower);
+  const nameCorrect = nameLower[0].toUpperCase() + nameLower.slice(1);
+  console.log(nameCorrect);
+};
+
+checkNmae('SVEtlaNa');
+
+//Comparing emails
+const email = 'hello@jonas.io';
+const loginEmail = ' HeLLo@JoNas.IO \n';
+const lowerEmail = loginEmail.toLowerCase();
+console.log(lowerEmail);
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+const normalizedEmail = lowerEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+if (email === normalizedEmail) {
+  console.log('ok');
+} else {
+  console.log('Not ok');
+}
