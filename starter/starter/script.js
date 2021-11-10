@@ -171,7 +171,7 @@ for (const [min, eventss] of gameEvents) {
   console.log(`[${half} HALF]: ${min}: ${eventss}`);
 }
 */
-
+/*
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
 
@@ -242,3 +242,88 @@ if (email === normalizedEmail) {
 } else {
   console.log('Not ok');
 }
+
+//replacing
+const priceGB = '288,25&';
+const priceUS = priceGB.replace('&', '$').replace(',', '.');
+console.log(priceUS);
+*/
+
+/*
+const announcment =
+  'All passengers come to boarding door 23. Boarding door 23!';
+//const announcmentCorrect = announcment.replace('door', 'gate');
+//console.log(announcmentCorrect);
+const announ = announcment.replace(/door/g, 'gate');
+console.log(announ);
+const planes = 'Airbus320neo';
+console.log(planes.includes('A320'));
+console.log(planes.includes('Boeing'));
+console.log(planes.startsWith('A3')); // starts with some first letters
+
+if (planes.startsWith('Airbus') && planes.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family');
+} else {
+  console.log('This is not NEW part of Airbus family');
+}
+
+const checkBaggage = function (item) {
+  const baggage = item.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome on board!');
+  }
+};
+
+checkBaggage('I have laptop, some Food and a pocket Knife');
+checkBaggage('Socks and kamera');
+checkBaggage('Got some snacks and a gun for protection');
+
+console.log('a+very+nice+string'.split('+'));
+console.log('Svetlana Ivanova'.split(' '));
+const [firstName, lastName] = 'Jonas Smitdt'.split(' ');
+console.log(firstName, lastName);
+const mrr = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(mrr);
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  for (const n of names) {
+    //namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('jonas smidtd');
+*/
+
+console.log('a+very+nice+string'.split('+'));
+console.log('Johnas Michaell'.split(' '));
+const [firstName, lastName] = 'Johnas Smidtd'.split(' ');
+console.log([firstName, lastName]);
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const nameArr = [];
+
+  for (const n of names) {
+    //nameArr.push(n[0].toUpperCase() + n.slice(1));
+    nameArr.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(nameArr.join(' '));
+};
+
+capitalizeName('jessica ann smith');
+capitalizeName('jonass smortr');
+
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '-'));
+console.log('Jonas'.padStart(25, '*'));
+console.log('Jonas'.padEnd(25, '*'));
+console.log('Jonas'.padStart(15, '*').padEnd(25, '*'));
