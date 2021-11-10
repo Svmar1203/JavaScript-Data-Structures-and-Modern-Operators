@@ -347,3 +347,26 @@ const planesInLine = function (n) {
 };
 planesInLine(5);
 planesInLine(3);
+
+('Some_Variable');
+
+const one = function (namee) {
+  const oneWord = namee.split(' ');
+  console.log(oneWord);
+};
+/*
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
+*/
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  console.log(text);
+});
