@@ -249,6 +249,7 @@ const priceUS = priceGB.replace('&', '$').replace(',', '.');
 console.log(priceUS);
 */
 
+/*
 const announcment =
   'All passengers come to boarding door 23. Boarding door 23!';
 //const announcmentCorrect = announcment.replace('door', 'gate');
@@ -285,3 +286,87 @@ const [firstName, lastName] = 'Jonas Smitdt'.split(' ');
 console.log(firstName, lastName);
 const mrr = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
 console.log(mrr);
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  for (const n of names) {
+    //namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('jonas smidtd');
+*/
+
+/*
+console.log('a+very+nice+string'.split('+'));
+console.log('Johnas Michaell'.split(' '));
+const [firstName, lastName] = 'Johnas Smidtd'.split(' ');
+console.log([firstName, lastName]);
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const nameArr = [];
+
+  for (const n of names) {
+    //nameArr.push(n[0].toUpperCase() + n.slice(1));
+    nameArr.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(nameArr.join(' '));
+};
+
+capitalizeName('jessica ann smith');
+capitalizeName('jonass smortr');
+
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '-'));
+console.log('Jonas'.padStart(25, '*'));
+console.log('Jonas'.padEnd(25, '*'));
+console.log('Jonas'.padStart(15, '*').padEnd(25, '*'));
+*/
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice('-4');
+  const correct = last.padStart(str.length, '*');
+  return correct;
+};
+
+console.log(maskCreditCard('121212123456789'));
+
+const messages = 'Bad weather...All Departures Delayed...   ';
+console.log(messages.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'*'.repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+
+('Some_Variable');
+
+const one = function (namee) {
+  const oneWord = namee.split(' ');
+  console.log(oneWord);
+};
+/*
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
+*/
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  console.log(text);
+});
