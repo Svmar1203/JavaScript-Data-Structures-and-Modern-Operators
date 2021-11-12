@@ -4,6 +4,12 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  console.log(type, from, to, time);
+  const output = `${type} ${from} ${to} (${time.replace(':', 'h')})`;
+  console.log(output);
+}
 // Data needed for first part of the section
 /*
 const restaurant = {
@@ -330,6 +336,7 @@ console.log('Jonas'.padEnd(25, '*'));
 console.log('Jonas'.padStart(15, '*').padEnd(25, '*'));
 */
 
+/*
 const maskCreditCard = function (number) {
   const str = number + '';
   const last = str.slice('-4');
@@ -353,7 +360,9 @@ planesInLine(3);
 const one = function (namee) {
   const oneWord = namee.split(' ');
   console.log(oneWord);
+  00;
 };
+*/
 /*
 THIS TEST DATA (pasted to textarea)
 underscore_case
@@ -363,19 +372,21 @@ Some_Variable
 delayed_departure
 */
 
+/*
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 
 document.querySelector('button').addEventListener('click', function () {
   const text = document.querySelector('textarea').value;
   const rows = text.split('\n');
-  console.log(rows);
-  for (const row of rows) {
+
+  for (const [i, row] of rows.entries()) {
     const [first, second] = row.toLowerCase().trim().split('_');
     const output = `${first}${second.replace(
       second[0],
       second[0].toUpperCase()
     )}`;
-    console.log(output);
+    console.log(`${output.padEnd([20])}${'🎅'.repeat(i + 1)}`);
   }
 });
+*/
