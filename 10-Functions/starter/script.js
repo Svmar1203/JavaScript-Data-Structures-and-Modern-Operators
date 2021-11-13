@@ -17,3 +17,4 @@ const createBooking = function (flightNum, numPassenger = 1, price = 199) {
 };
 
 createBooking('LH123');
+createBooking('LH123', 123, 800);
