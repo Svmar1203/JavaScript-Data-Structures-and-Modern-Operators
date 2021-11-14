@@ -54,6 +54,7 @@ const newPassport = function (person) {
 newPassport(passenger);
 checkInn(flight, passenger);
 */
+/*
 const oneWord = function (str) {
   return str.replace(/ /g, ' ');
 };
@@ -66,7 +67,51 @@ const upper = function (str) {
 const transformer = function (str, fn) {
   console.log(`original string: ${str}`);
   console.log(`transformed string: ${fn(str)}`);
-  console.log(`transformd by: ${fn.name}`);
+  console.log(`transformed by: ${fn.name}`);
 };
 
 transformer('JavaScript is the best', upper);
+*/
+
+const oneTwo = function (str) {
+  const too = str.replace(/ /g, '').toLowerCase();
+  console.log(too);
+};
+
+const firstToUpper = function (str) {
+  const [first, ...other] = str.split(' ');
+  return [first.toUpperCase(), ...other].join(' ');
+};
+
+const transform = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transform('JavaScript is the best!', firstToUpper);
+
+transform('JavaScript is the best!', oneTwo);
+
+const high5 = function () {
+  console.log('🤑❤️😍😘');
+};
+
+document.body.addEventListener('click', high5);
+
+['Adam', 'Jonas', 'Sveta'].forEach(high5);
+
+document.querySelector('button').addEventListener('click', function () {
+  console.log('😘Are you buy plane??');
+});
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greetreHey = greet('HEy!');
+greetreHey('Jonas');
+greetreHey('Steven');
+greet('Hello')('Sveta!');
