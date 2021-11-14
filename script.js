@@ -101,10 +101,6 @@ document.body.addEventListener('click', high5);
 
 ['Adam', 'Jonas', 'Sveta'].forEach(high5);
 
-document.querySelector('button').addEventListener('click', function () {
-  console.log('😘Are you buy plane??');
-});
-
 const greet = function (greeting) {
   return function (name) {
     console.log(`${greeting} ${name}`);
@@ -115,3 +111,78 @@ const greetreHey = greet('HEy!');
 greetreHey('Jonas');
 greetreHey('Steven');
 greet('Hello')('Sveta!');
+
+const bey = greeting => name => console.log(`${greeting} ${name}`);
+
+bey('Hi')('Jonas');
+
+const lufthansa = {
+  airLine: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airLine} flight ${this.iataCode} ${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode} ${flightNum}, name` });
+  },
+};
+
+lufthansa.book(345, 'Jonas Inner');
+lufthansa.book(678, 'Michael Gordon');
+console.log(lufthansa);
+
+const eurowings = {
+  airLine: 'Eurowings',
+  name: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 42, 'Svetlana Coorrt');
+console.log(lufthansa);
+
+const swiss = {
+  airLine: 'Swiss Air Lines',
+  name: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 54, 'Yana Booju');
+
+const fligtData = [583, 'Georg Cooper'];
+book.apply(swiss, fligtData);
+console.log(swiss);
+
+book.call(swiss, ...fligtData);
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookSw = book.bind(swiss);
+bookSw(78, 'Michael Doorter');
+bookLH(45, 'Enn Youyu');
+bookEW(23, 'Anna Fotrew');
+
+const bookEW23 = book.bind(eurowings, 23);
+const bookLH458 = book.bind(lufthansa, 458);
+const bookSw788 = book.bind(swiss, 788);
+bookSw788('Mille Neonn');
+bookLH458('Jana Yamee');
+bookEW23('Ste Fgtree');
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+lufthansa.buyPlane();
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
