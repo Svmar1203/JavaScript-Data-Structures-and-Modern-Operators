@@ -186,3 +186,36 @@ lufthansa.buyPlane();
 document
   .querySelector('.buy')
   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+const addTax = (rate, value) => value + value * rate;
+console.log(`Summa is ${addTax(0.1, 200)}`);
+const addVAT = addTax.bind(null, 0.23);
+//addVAT = value => value + value * 0.23;
+console.log(addVAT(250));
+
+const tax1 = function (rate1) {
+  return function (value1) {
+    const summ = value1 + value1 * rate1;
+    console.log(summ);
+  };
+};
+
+/*
+const sum12 = tax1(250);
+sum12(0.1);
+sum12(0.23);
+*/
+
+////////////----solution from Jonas----//////////////////
+const sum12 = tax1(0.2);
+sum12(300);
+
+const addTaxRate = function (rate3) {
+  return function (value3) {
+    return value3 + value3 * rate3;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+console.log(addVAT2(200));
