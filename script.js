@@ -98,3 +98,20 @@ const high5 = function () {
 };
 
 document.body.addEventListener('click', high5);
+
+['Adam', 'Jonas', 'Sveta'].forEach(high5);
+
+document.querySelector('button').addEventListener('click', function () {
+  console.log('😘Are you buy plane??');
+});
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greetreHey = greet('HEy!');
+greetreHey('Jonas');
+greetreHey('Steven');
+greet('Hello')('Sveta!');
