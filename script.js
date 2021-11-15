@@ -73,6 +73,7 @@ const transformer = function (str, fn) {
 transformer('JavaScript is the best', upper);
 */
 
+/*
 const oneTwo = function (str) {
   const too = str.replace(/ /g, '').toLowerCase();
   console.log(too);
@@ -199,6 +200,7 @@ const tax1 = function (rate1) {
     console.log(summ);
   };
 };
+*/
 
 /*
 const sum12 = tax1(250);
@@ -206,6 +208,7 @@ sum12(0.1);
 sum12(0.23);
 */
 
+/*
 ////////////----solution from Jonas----//////////////////
 const sum12 = tax1(0.2);
 sum12(300);
@@ -219,3 +222,35 @@ const addTaxRate = function (rate3) {
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(200));
+*/
+
+const poll = {
+  question: 'What is your favorite programming language?',
+  options: ['0: JAvaScript', '1: Python', '2: Rust', '3: C++'],
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    const answer = Number(
+      prompt(
+        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+      )
+    );
+    console.log(answer);
+    typeof answer === 'number' &&
+      answer < this.answers.length &&
+      this.answers[answer]++;
+    console.log(this.answers);
+    this.displayResults();
+    this.displayResults('string');
+  },
+  displayResults(type = 'array') {
+    if (type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string') {
+      console.log(`Poll results ${this.answers.join(', ')}`);
+    }
+  },
+};
+
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
