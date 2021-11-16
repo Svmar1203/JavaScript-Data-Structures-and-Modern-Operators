@@ -223,10 +223,11 @@ const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(200));
 */
-
+///////////////////////////////////
+/*
 const poll = {
   question: 'What is your favorite programming language?',
-  options: ['0: JAvaScript', '1: Python', '2: Rust', '3: C++'],
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   answers: new Array(4).fill(0),
   registerNewAnswer() {
     const answer = Number(
@@ -245,8 +246,9 @@ const poll = {
   displayResults(type = 'array') {
     if (type === 'array') {
       console.log(this.answers);
-    } else if (type === 'string') {
-      console.log(`Poll results ${this.answers.join(', ')}`);
+    }
+    if (type === 'string') {
+      console.log(`Poll results are ${this.answers.join(', ')}`);
     }
   },
 };
@@ -254,3 +256,33 @@ const poll = {
 document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+poll.displayResults.call({ answers: [1, 2, 3, 4, 5] });
+*/
+////////////////////////////////////////
+
+const runOnce = function () {
+  console.log('This newer run again');
+};
+
+runOnce();
+//IIFE
+(function () {
+  console.log('This newer run again');
+})();
+//
+(() => console.log('This will ALSO newer run again'))();
+
+//////--CLOSER-//////////
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+booker();
