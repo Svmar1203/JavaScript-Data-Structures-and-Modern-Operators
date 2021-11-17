@@ -316,15 +316,27 @@ console.dir(f);
 */
 
 ////////////////--Example 2--////////////////
-const boardPAssengers = function (n, wait) {
+const boardPassenger = function (n, wait) {
   const perGroup = n / 3;
 
   setTimeout(function () {
     console.log(`We are now boarding all ${n} passengers`);
-    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+    console.log(`There are 3 groups in ${perGroup} passengers`);
   }, wait * 1000);
 
   console.log(`Will start boarding in ${wait} seconds`);
 };
 
-boardPAssengers(180, 3);
+boardPassenger(180, 2);
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  function change(elem, color) {
+    document.querySelector(elem).addEventListener('click', function () {
+      header.style.color = color;
+    });
+  }
+  change('body', 'blue');
+})();
