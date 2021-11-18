@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 /*
@@ -112,6 +112,7 @@ console.log(letter.join('-'));
 
 //////////
 */
+/*
 const arr = [23, 33, 44];
 console.log(arr[0]);
 console.log(arr.at(0)); //the same result
@@ -120,3 +121,23 @@ console.log(arr.slice(-1)[0]);
 console.log(arr.at(-1)); // get the last element of arr
 console.log('jonas'.at(0));
 console.log('jonas'.at(-1));
+*/
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/*
+for (const movElem of movements) {
+  if (movElem > 0) {
+    console.log(`You deposited ${movElem}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movElem)}`); // Math.abs number without minus
+  }
+}
+*/
+
+movements.forEach(function (movEl) {
+  if (movEl > 0) {
+    console.log(`You depostit ${movEl}`);
+  } else {
+    console.log(`You withdrow ${Math.abs(movEl)}`);
+  }
+});
