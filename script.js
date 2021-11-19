@@ -187,6 +187,9 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
+
+////////////----MY Solution----///////////////
+/*
 const dogsJulia = [3, 5, 2, 12, 7];
 const dogsKate = [4, 1, 15, 8, 3];
 const dogsJulia2 = [9, 16, 6, 8, 3];
@@ -200,9 +203,11 @@ function checkDogs(arr1, arr2) {
   bothArr.forEach(function (value, key, map) {
     if (value >= 3) {
       console.log(
+        //Dog number 1 is an adult, and is 5 years old
         `Dog number ${key + 1} is an adult, and is ${value} years old`
       );
     } else {
+      //Dog number 2 is still a puppy 🐶
       console.log(
         `Dog number ${key + 1} is still a puppy, and is ${value} years old`
       );
@@ -211,3 +216,31 @@ function checkDogs(arr1, arr2) {
 }
 
 checkDogs(dogsJulia2, dogsKate2);
+*/ /////////////////-----END------/////////////
+
+/////////////--SOLUTION FROM JONAS--///////////
+
+const dogsJulia = [3, 5, 2, 12, 7];
+const dogsKate = [4, 1, 15, 8, 3];
+
+const checkDogs = function (arr1, arr2) {
+  const dogsJuliaCorrected = arr1.slice();
+  dogsJuliaCorrected.splice(0, 1);
+  dogsJuliaCorrected.splice(-1);
+  console.log(dogsJuliaCorrected);
+  const dogs = dogsJuliaCorrected.concat(dogsKate);
+  console.log(dogs);
+  dogs.forEach(function (value, index) {
+    if (value >= 3) {
+      console.log(
+        `Dog number ${index + 1} is an adult, and is ${value} years old`
+      );
+    } else {
+      console.log(
+        `Dog number ${index + 1} is still puppy and is ${value} years old`
+      );
+    }
+  });
+};
+
+checkDogs(dogsJulia, dogsKate);
