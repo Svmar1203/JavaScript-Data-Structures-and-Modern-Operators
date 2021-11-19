@@ -1,342 +1,213 @@
 'use strict';
-/*
-const bookings = [];
 
-const createBooking = function (
-  flightNum,
-  numPassenger = 5,
-  price = 199 * numPassenger
-) {
-  // ES5 numPassenger = numPassenger || 1;
-  //ES5 price = price || 199;
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// BANKIST APP
 
-  const booking = {
-    flightNum,
-    numPassenger,
-    price,
-  };
-
-  console.log(booking);
-  bookings.push(booking);
+// Data
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
 };
 
-createBooking('LH123', 2);
-createBooking('LH123');
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+// Elements
+const labelWelcome = document.querySelector('.welcome');
+const labelDate = document.querySelector('.date');
+const labelBalance = document.querySelector('.balance__value');
+const labelSumIn = document.querySelector('.summary__value--in');
+const labelSumOut = document.querySelector('.summary__value--out');
+const labelSumInterest = document.querySelector('.summary__value--interest');
+const labelTimer = document.querySelector('.timer');
+
+const containerApp = document.querySelector('.app');
+const containerMovements = document.querySelector('.movements');
+
+const btnLogin = document.querySelector('.login__btn');
+const btnTransfer = document.querySelector('.form__btn--transfer');
+const btnLoan = document.querySelector('.form__btn--loan');
+const btnClose = document.querySelector('.form__btn--close');
+const btnSort = document.querySelector('.btn--sort');
+
+const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginPin = document.querySelector('.login__input--pin');
+const inputTransferTo = document.querySelector('.form__input--to');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin');
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
+/*
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
 */
 
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
 /*
-const flight = 'L124';
-const passenger = {
-  name: 'Johnas Coort',
-  passport: 234567890,
-};
+let arr = ['a', 'b', 'c', 'd', 'e'];
+/////// SLICE //// Slice method not mutate original arr
+console.log(arr.slice(2));
+console.log(arr.slice(1, 4));
+console.log(arr.slice(-2)); // 2 last elements from end
+console.log(arr.slice(-1)); // last element
+console.log(arr.slice(1, -2)); // elment 2 from end not included
+console.log(arr.slice()); // just shallow copy of existing array
+console.log([...arr]);
 
-const checkInn = function (flightNum, passenger) {
-  flightNum = 'LH123';
-  passenger.name = 'Mr' + passenger.name;
+//////// SPLICE  //Mutate the original array
 
-  if (passenger.passport === 234567890) {
-    alert('Check Inn');
+//console.log(arr.splice(2)); //from 2 element data from original arr is deleted
+//console.log(arr); //original arr is mutated
+arr.splice(-1); // delete last element
+console.log(arr);
+arr.splice(1, 2); // second parameter (2), is count of deleted elements
+console.log(arr);
+
+//////// REVERSE  //Mutate the original array
+arr = ['a', 'b', 'c', 'd', 'e'];
+
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+console.log(arr2);
+
+///////// CONCAT  //do is not mutate the original array
+const letter = arr.concat(arr2);
+console.log(letter);
+console.log([...arr, ...arr2]); // the same result as concat method
+console.log(...arr, ...arr2);
+
+///////// JOIN
+console.log(letter.join('-'));
+
+//////////
+*/
+/*
+const arr = [23, 33, 44];
+console.log(arr[0]);
+console.log(arr.at(0)); //the same result
+console.log(arr[arr.length - 1]);
+console.log(arr.slice(-1)[0]);
+console.log(arr.at(-1)); // get the last element of arr
+console.log('jonas'.at(0));
+console.log('jonas'.at(-1));
+*/
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const movElem of movements) {
+  if (movElem > 0) {
+    console.log(`You deposited ${movElem}`);
   } else {
-    alert('Wrong Passport');
+    console.log(`You withdrew ${Math.abs(movElem)}`); // Math.abs number without minus
   }
-};
+}
 
-checkInn(flight, passenger);
-console.log(flight);
-console.log(passenger);
-
-
-const newPassport = function (person) {
-  person.passport = Math.trunc(Math.random() * 100000000000);
-};
-
-newPassport(passenger);
-checkInn(flight, passenger);
-*/
-/*
-const oneWord = function (str) {
-  return str.replace(/ /g, ' ');
-};
-
-const upper = function (str) {
-  const [first, ...other] = str.split(' ');
-  return [first.toUpperCase(), ...other].join(' ');
-};
-
-const transformer = function (str, fn) {
-  console.log(`original string: ${str}`);
-  console.log(`transformed string: ${fn(str)}`);
-  console.log(`transformed by: ${fn.name}`);
-};
-
-transformer('JavaScript is the best', upper);
-*/
-
-/*
-const oneTwo = function (str) {
-  const too = str.replace(/ /g, '').toLowerCase();
-  console.log(too);
-};
-
-const firstToUpper = function (str) {
-  const [first, ...other] = str.split(' ');
-  return [first.toUpperCase(), ...other].join(' ');
-};
-
-const transform = function (str, fn) {
-  console.log(`Original string: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
-  console.log(`Transformed by: ${fn.name}`);
-};
-
-transform('JavaScript is the best!', firstToUpper);
-
-transform('JavaScript is the best!', oneTwo);
-
-const high5 = function () {
-  console.log('🤑❤️😍😘');
-};
-
-document.body.addEventListener('click', high5);
-
-['Adam', 'Jonas', 'Sveta'].forEach(high5);
-
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
-};
-
-const greetreHey = greet('HEy!');
-greetreHey('Jonas');
-greetreHey('Steven');
-greet('Hello')('Sveta!');
-
-const bey = greeting => name => console.log(`${greeting} ${name}`);
-
-bey('Hi')('Jonas');
-
-const lufthansa = {
-  airLine: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airLine} flight ${this.iataCode} ${flightNum}`
-    );
-    this.bookings.push({ flight: `${this.iataCode} ${flightNum}, name` });
-  },
-};
-
-lufthansa.book(345, 'Jonas Inner');
-lufthansa.book(678, 'Michael Gordon');
-console.log(lufthansa);
-
-const eurowings = {
-  airLine: 'Eurowings',
-  name: 'Eurowings',
-  iataCode: 'EW',
-  bookings: [],
-};
-
-const book = lufthansa.book;
-book.call(eurowings, 23, 'Sarah Williams');
-console.log(eurowings);
-
-book.call(lufthansa, 42, 'Svetlana Coorrt');
-console.log(lufthansa);
-
-const swiss = {
-  airLine: 'Swiss Air Lines',
-  name: 'Swiss Air Lines',
-  iataCode: 'LX',
-  bookings: [],
-};
-
-book.call(swiss, 54, 'Yana Booju');
-
-const fligtData = [583, 'Georg Cooper'];
-book.apply(swiss, fligtData);
-console.log(swiss);
-
-book.call(swiss, ...fligtData);
-
-const bookEW = book.bind(eurowings);
-const bookLH = book.bind(lufthansa);
-const bookSw = book.bind(swiss);
-bookSw(78, 'Michael Doorter');
-bookLH(45, 'Enn Youyu');
-bookEW(23, 'Anna Fotrew');
-
-const bookEW23 = book.bind(eurowings, 23);
-const bookLH458 = book.bind(lufthansa, 458);
-const bookSw788 = book.bind(swiss, 788);
-bookSw788('Mille Neonn');
-bookLH458('Jana Yamee');
-bookEW23('Ste Fgtree');
-
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
-  this.planes++;
-  console.log(this.planes);
-};
-lufthansa.buyPlane();
-
-document
-  .querySelector('.buy')
-  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
-
-const addTax = (rate, value) => value + value * rate;
-console.log(`Summa is ${addTax(0.1, 200)}`);
-const addVAT = addTax.bind(null, 0.23);
-//addVAT = value => value + value * 0.23;
-console.log(addVAT(250));
-
-const tax1 = function (rate1) {
-  return function (value1) {
-    const summ = value1 + value1 * rate1;
-    console.log(summ);
-  };
-};
-*/
-
-/*
-const sum12 = tax1(250);
-sum12(0.1);
-sum12(0.23);
-*/
-
-/*
-////////////----solution from Jonas----//////////////////
-const sum12 = tax1(0.2);
-sum12(300);
-
-const addTaxRate = function (rate3) {
-  return function (value3) {
-    return value3 + value3 * rate3;
-  };
-};
-
-const addVAT2 = addTaxRate(0.23);
-console.log(addVAT2(100));
-console.log(addVAT2(200));
-*/
-///////////////////////////////////
-/*
-const poll = {
-  question: 'What is your favorite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  answers: new Array(4).fill(0),
-  registerNewAnswer() {
-    const answer = Number(
-      prompt(
-        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
-      )
-    );
-    console.log(answer);
-    typeof answer === 'number' &&
-      answer < this.answers.length &&
-      this.answers[answer]++;
-    console.log(this.answers);
-    this.displayResults();
-    this.displayResults('string');
-  },
-  displayResults(type = 'array') {
-    if (type === 'array') {
-      console.log(this.answers);
-    }
-    if (type === 'string') {
-      console.log(`Poll results are ${this.answers.join(', ')}`);
-    }
-  },
-};
-
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
-
-poll.displayResults.call({ answers: [1, 2, 3, 4, 5] });
-*/
-////////////////////////////////////////
-
-const runOnce = function () {
-  console.log('This newer run again');
-};
-
-runOnce();
-//IIFE
-(function () {
-  console.log('This newer run again');
-})();
-//
-(() => console.log('This will ALSO newer run again'))();
-
-//////--CLOSER-//////////
-
-const secureBooking = function () {
-  let passengerCount = 0;
-
-  return function () {
-    passengerCount++;
-    console.log(passengerCount);
-  };
-};
-
-const booker = secureBooking();
-booker();
-booker();
-booker();
-
-////--Example 1--/////////////
-/*
-let f;
-
-const g = function () {
-  const z = 23;
-
-  f = function () {
-    console.log(z * 2);
-  };
-};
-
-const h = function () {
-  const b = 777;
-  f = function () {
-    console.log(b * 2);
-  };
-};
-
-g();
-f();
-h();
-f();
-console.dir(f);
-*/
-
-////////////////--Example 2--////////////////
-const boardPassenger = function (n, wait) {
-  const perGroup = n / 3;
-
-  setTimeout(function () {
-    console.log(`We are now boarding all ${n} passengers`);
-    console.log(`There are 3 groups in ${perGroup} passengers`);
-  }, wait * 1000);
-
-  console.log(`Will start boarding in ${wait} seconds`);
-};
-
-boardPassenger(180, 2);
-
-(function () {
-  const header = document.querySelector('h1');
-  header.style.color = 'red';
-
-  function change(elem, color) {
-    document.querySelector(elem).addEventListener('click', function () {
-      header.style.color = color;
-    });
+console.log('------------FOREACH---------------');
+movements.forEach(function (mov, i, arr) {
+  // first element is always movement, second elem is index, third is array
+  if (mov > 0) {
+    console.log(`Movement ${i + 1}: You deposit ${mov}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrow ${mov}`);
   }
-  change('body', 'blue');
-})();
+});
+
+console.log(`---------ENTERIES------------`);
+for (const [i, elem] of movements.entries()) {
+  if (elem > 0) {
+    console.log(`Element ${i + 1}: You deposited ${Math.abs(elem)}`);
+  } else {
+    console.log(`Element ${i + 1}: you withdrow ${Math.abs(elem)}`);
+  }
+}
+*/
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value} `);
+});
+
+const currentUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currentUnique);
+
+currentUnique.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+/* 
+Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners about their dog's age, and stored the data into an array (one array for each). For now, they are just interested in knowing whether a dog is an adult or a puppy. A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years old.
+
+Create a function 'checkDogs', which accepts 2 arrays of dog's ages ('dogsJulia' and 'dogsKate'), and does the following things:
+
+1. Julia found out that the owners of the FIRST and the LAST TWO dogs actually have cats, not dogs! So create a shallow copy of Julia's array, and remove the cat ages from that copied array (because it's a bad practice to mutate function parameters)
+2. Create an array with both Julia's (corrected) and Kate's data
+3. For each remaining dog, log to the console whether it's an adult ("Dog number 1 is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy 🐶")
+4. Run the function for both test datasets
+
+HINT: Use tools from all lectures in this section so far 😉
+
+TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
+TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+const dogsJulia = [3, 5, 2, 12, 7];
+const dogsKate = [4, 1, 15, 8, 3];
+const dogsJulia2 = [9, 16, 6, 8, 3];
+const dogsKate2 = [10, 5, 6, 1, 4];
+
+function checkDogs(arr1, arr2) {
+  const newJulia = arr1.slice(1, -2);
+  console.log(newJulia);
+  const bothArr = newJulia.concat(arr2);
+  console.log(bothArr);
+  bothArr.forEach(function (value, key, map) {
+    if (value >= 3) {
+      console.log(
+        `Dog number ${key + 1} is an adult, and is ${value} years old`
+      );
+    } else {
+      console.log(
+        `Dog number ${key + 1} is still a puppy, and is ${value} years old`
+      );
+    }
+  });
+}
+
+checkDogs(dogsJulia2, dogsKate2);
