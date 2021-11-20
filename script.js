@@ -244,3 +244,47 @@ const checkDogs = function (arr1, arr2) {
 };
 
 checkDogs(dogsJulia, dogsKate);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+//MAP methods return value from each itteration of origin array
+//MAP method NOT mutate origin array
+const movementsUSD = movements.map(function (value) {
+  return value * eurToUsd;
+});
+
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+console.log(movementsUSDfor);
+
+///////////--Arrow function, MY solution--///////////
+const movUSD = value => console.log(movements.map(value * eurToUsd));
+
+//////////////---Solution for Jonas---//////////
+const movmUSD = movements.map(value => value * eurToUsd);
+console.log(movmUSD);
+/////////////--First variant---///////////
+/*
+const movementsDescription = movements.map((val, index, arr) => {
+  if (val > 0) {
+    return `Movements ${index + 1}: You deposited ${val} `;
+  } else {
+    return `Movements ${index}: You withdrew ${Math.abs(val)}`;
+  }
+});
+console.log(movementsDescription);
+console.log(...movementsDescription);
+*/
+////////////---second variant arrow function---/////////////
+
+const movementsDescription = movements.map(
+  (val, index) =>
+    `Movements ${index + 1}: You ${
+      val > 0 ? 'deposited' : 'withdrew'
+    } ${Math.abs(val)}`
+);
+
+console.log(movementsDescription);
