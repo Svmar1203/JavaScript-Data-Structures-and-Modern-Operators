@@ -79,6 +79,78 @@ const displayMovements = function (movements) {
 displayMovements(account1.movements);
 //console.log(containerMovements.innerHTML);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((accum, value) => accum + value, 0); // 0 is initial value
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+
+console.log(`Max value is ${max}`);
+
+const testData = [5, 2, 4, 1, 15, 8, 3];
+const testData2 = [16, 6, 10, 5, 6, 1, 4];
+
+const test = testData.filter(function (val) {
+  if (val > 2) {
+    console.log(`Age is greather then 2: age is ${val}`);
+    console.log(`Human age is ${val * 2}`);
+  } else {
+    console.log(`Age is less then 2: age is ${val * 4 + 16}`);
+  }
+});
+
+console.log(test);
+
+function calcAverageHumanAge(arr) {
+  const list = arr.filter(function (vall) {
+    if (vall <= 2) {
+      console.log(`Human age: ${vall * 2}`);
+    } else {
+      console.log(`Human age: ${vall * 4 + 16}`);
+    }
+  });
+}
+
+const emptyArr = [];
+function calcAge(arrArr) {
+  const hot = arrArr.filter(function (val) {
+    if (val <= 2) {
+      emptyArr.push(val * 2);
+    } else {
+      emptyArr.push(val * 4 + 16);
+    }
+  });
+}
+
+calcAge(testData);
+
+console.log(emptyArr);
+
+const newArr = [];
+
+function exclude(emArr) {
+  const tesst = emArr.filter(function (mov) {
+    if (mov > 18) {
+      newArr.push(mov);
+    }
+  });
+}
+
+exclude(emptyArr);
+console.log(newArr);
+
+console.log(`------------------------------`);
+calcAverageHumanAge(testData);
+console.log(`-------------------------------`);
+calcAverageHumanAge(testData2);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -89,10 +161,8 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 /////////////////////////////////////////////////
-
+/*
 const creatAcc = function (accounn) {
   const userr = accounn.forEach(function (part) {
     part.username = part.owner
@@ -123,9 +193,13 @@ console.log(depositFor);
 
 const withdrawals = movements.filter(part => part < 0);
 console.log(withdrawals);
+*/
+
+//////////////--REDUCE--/////////////////
 
 //accumulator -> SNOWBALL
 
+/*
 const balance = movements.reduce(function (accum, current, index, arr) {
   console.log(`Iterration ${index}: sum is ${accum}`);
   return accum + current;
@@ -136,4 +210,5 @@ let sum = 0;
 for (let mov of movements) sum = sum += mov; //sum = sum + mov;
 console.log(sum);
 
-const ballans = movements.reduce((acc1, curr1) => acc1 + curr1, 0);
+//const ballans = movements.reduce((acc1, curr1) => acc1 + curr1, 0);
+*/
