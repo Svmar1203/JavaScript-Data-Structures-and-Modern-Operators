@@ -97,6 +97,35 @@ console.log(`Max value is ${max}`);
 const testData = [5, 2, 4, 1, 15, 8, 3];
 const testData2 = [16, 6, 10, 5, 6, 1, 4];
 
+const dogAgeCalculate = testData.map((value, ind) =>
+  value <= 2 ? value * 2 : 16 + value * 4
+);
+console.log(dogAgeCalculate);
+
+function calcDog(arr) {
+  const newArr = [];
+  const humanAge = arr.map(value =>
+    value <= 2 ? newArr.push(value * 2) : newArr.push(16 + value * 4)
+  );
+  console.log(newArr);
+  const excludeArr = [];
+  const exclude = newArr.filter(function (mov) {
+    if (mov > 18) excludeArr.push(mov);
+  });
+  console.log(excludeArr);
+  const average = excludeArr.reduce((accum, current) => accum + current, 0);
+  console.log(`The summa of all dogs adges: ${average}`);
+  const balans = average / excludeArr.length;
+  console.log(
+    `The average human age of all adult dogs is ${Math.trunc(balans)}`
+  );
+}
+
+calcDog(testData);
+console.log(`---------------------------------`);
+calcDog(testData2);
+
+/*
 const test = testData.filter(function (val) {
   if (val > 2) {
     console.log(`Age is greather then 2: age is ${val}`);
@@ -131,8 +160,6 @@ function calcAge(arrArr) {
 
 calcAge(testData);
 
-console.log(emptyArr);
-
 const newArr = [];
 
 function exclude(emArr) {
@@ -151,15 +178,20 @@ calcAverageHumanAge(testData);
 console.log(`-------------------------------`);
 calcAverageHumanAge(testData2);
 
+console.log(emptyArr);
+*/
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
+/*
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
+*/
 
 /////////////////////////////////////////////////
 /*
