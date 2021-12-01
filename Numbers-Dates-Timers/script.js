@@ -262,3 +262,18 @@ console.log(Number.parseInt('2.5rem'));
 console.log(Number.isNaN(20));
 console.log(Number.isNaN(+'20X'));
 console.log(Number.isNaN(23 / 0)); // Infinity
+
+console.log(Number.isFinite('20'));
+console.log(Number.isFinite(20));
+
+console.log(Math.sqrt(25));
+console.log(25 ** (1 / 2));
+console.log(8 ** (1 / 3));
+console.log(Math.max(5, 7, 87, 99, 43));
+console.log(Math.max(8, '98', 65, 4));
+console.log(Math.min(9, 6, 1, '87'));
+console.log(Math.PI * Number.parseFloat('10px') ** 2); // circel
+console.log(Math.trunc(Math.random() * 6) + 1);
+const randomInt = (min, max) =>
+  Math.trunc(Math.random() * (max - min) + 1) + min;
+console.log(randomInt(10, 20));
