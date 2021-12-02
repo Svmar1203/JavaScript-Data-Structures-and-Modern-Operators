@@ -256,6 +256,7 @@ console.log(Number('23'));
 console.log(+'23');
 
 // Parsing
+/*
 console.log(Number.parseInt('30px', 10));
 console.log(Number.parseFloat('2.5rem'));
 console.log(Number.parseInt('2.5rem'));
@@ -274,6 +275,20 @@ console.log(Math.max(8, '98', 65, 4));
 console.log(Math.min(9, 6, 1, '87'));
 console.log(Math.PI * Number.parseFloat('10px') ** 2); // circel
 console.log(Math.trunc(Math.random() * 6) + 1);
+*/
 const randomInt = (min, max) =>
-  Math.trunc(Math.random() * (max - min) + 1) + min;
-console.log(randomInt(10, 20));
+  Math.floor(Math.random() * (max - min) + 1) + min;
+console.log(randomInt(-10, 20)); // floor work better with negative numbers!
+
+//console.log(Math.trunc(23.311));// cut the decimal part of number
+//console.log(Math.round(23.3));
+//console.log(Math.round(23.9));
+//console.log(Math.ceil(23.3));
+//console.log(Math.ceil(23.9));
+//console.log(Math.floor(23.3));// cut the decimal part of number, positiv int!!
+console.log(Math.floor(-23.3)); // with negativ numbers floor is around of number
+console.log(Math.trunc(-23.3)); // with negative number trunc  just cut the decimal part of number
+
+console.log((2.7).toFixed(0)); // toFixed return string! NOT a NUMBER
+console.log((2.7).toFixed(3));
+console.log(+(3.456).toFixed(2)); // if we wont return a Number, we need to add +, this convert string to a a number
